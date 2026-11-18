@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#05080d">
+<meta name="description" content="House Party Eventos — organización y producción de eventos en Costa Rica.">
+<title>House Party Eventos | Organización de Eventos</title>
+<style>
+:root{--black:#05080d;--deep:#071522;--blue:#55c8f2;--blue2:#a5e8ff;--white:#f7fbff;--muted:#b9c7d1;--line:rgba(132,220,255,.22)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--black);color:var(--white);font-family:Arial,Helvetica,sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{width:min(1160px,92%);margin:auto}
+header{position:sticky;top:0;z-index:20;background:rgba(5,8,13,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{font-weight:900;letter-spacing:2px;color:var(--blue);font-size:1.05rem}
+nav{display:flex;gap:22px;flex-wrap:wrap;justify-content:flex-end}
+nav a{font-size:.9rem;color:#e7f6ff;transition:.2s}
+nav a:hover{color:var(--blue)}
+.hero{background:#000;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero img{width:100%;height:clamp(260px,43vw,560px);object-fit:contain;object-position:center;background:#000}
+.hero-caption{position:absolute;left:0;right:0;bottom:0;padding:34px 4%;text-align:center;background:linear-gradient(transparent,rgba(0,0,0,.85))}
+.hero-caption p{margin:0;color:var(--blue2);font-size:clamp(.95rem,2vw,1.2rem);letter-spacing:2px;text-transform:uppercase}
+.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--blue);color:#04111a;font-weight:800;padding:12px 22px;border-radius:999px;margin-top:14px;transition:.2s}
+.btn:hover{background:var(--white);transform:translateY(-2px)}
+section{padding:82px 0}
+.eyebrow{color:var(--blue);font-size:.78rem;letter-spacing:3px;text-transform:uppercase;font-weight:800}
+h2{font-size:clamp(2rem,4vw,3rem);line-height:1.12;margin:8px 0 20px}
+.intro{max-width:760px;color:var(--muted);font-size:1.08rem}
+.about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:42px;align-items:center}
+.about-photo{border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:0 18px 60px rgba(0,0,0,.35)}
+.about-photo img{width:100%;height:350px;object-fit:cover}
+.dark-section{background:linear-gradient(135deg,#081725,#05080d 70%);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:34px}
+.service{background:#0b1520;border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:.25s}
+.service:hover{transform:translateY(-5px);border-color:var(--blue)}
+.service img{width:100%;height:190px;object-fit:cover}
+.service .copy{padding:20px}
+.service h3{margin:0 0 7px;color:var(--blue2);font-size:1.18rem}
+.service p{margin:0;color:var(--muted);font-size:.95rem}
+.galeria-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}
+.galeria-grid button{padding:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#0b1520;cursor:pointer;aspect-ratio:1/1;transition:.25s}
+.galeria-grid button:hover,.galeria-grid button:focus-visible{border-color:var(--blue);transform:translateY(-3px);outline:none}
+.galeria-grid img{width:100%;height:100%;object-fit:cover}
+.galeria-msg{text-align:center;color:var(--muted);margin:22px 0 0}
+.lightbox{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.94);display:none;align-items:center;justify-content:center;touch-action:pan-y}
+.lightbox.open{display:flex}
+.lightbox img{max-width:94vw;max-height:86vh;object-fit:contain;border-radius:8px}
+.lb-btn{position:absolute;background:rgba(255,255,255,.12);color:#fff;border:0;width:46px;height:46px;border-radius:50%;font-size:1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.lb-btn:hover{background:var(--blue);color:#04111a}
+.lb-close{top:16px;right:16px}.lb-prev{left:12px;top:50%;transform:translateY(-50%)}.lb-next{right:12px;top:50%;transform:translateY(-50%)}
+.lb-count{position:absolute;bottom:16px;left:0;right:0;text-align:center;color:var(--muted);font-size:.85rem}
+.socials{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}
+.social-card{padding:24px;border:1px solid var(--line);border-radius:16px;background:#0b1520;text-align:center}
+.social-card strong{display:block;color:var(--blue2);font-size:1.15rem}
+.social-card span{font-size:.9rem;color:var(--muted)}
+.contact-box{background:linear-gradient(120deg,#0b2434,#08111b);border:1px solid var(--line);border-radius:22px;padding:clamp(26px,5vw,54px);display:flex;align-items:center;justify-content:space-between;gap:25px}
+.contact-box p{color:var(--muted);margin:0}
+footer{padding:25px 0;text-align:center;color:#8798a5;border-top:1px solid var(--line);font-size:.85rem}
+@media(max-width:800px){.galeria-grid{grid-template-columns:repeat(2,1fr);gap:10px}.about-grid{grid-template-columns:1fr}.services{grid-template-columns:repeat(2,1fr)}.contact-box{display:block}nav{gap:12px}}
+@media(max-width:540px){.nav{padding:12px 0;align-items:flex-start;flex-direction:column}nav{justify-content:flex-start;gap:10px 16px}nav a{font-size:.82rem}section{padding:60px 0}.services,.socials{grid-template-columns:1fr}.hero img{height:260px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#inicio">HOUSE PARTY EVENTOS</a>
+    <nav aria-label="Navegación principal">
+      <a href="#nosotros">Nosotros</a><a href="#servicios">Servicios</a><a href="#galeria">Galería</a><a href="#redes">Redes</a><a href="#contacto">Contáctanos</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="inicio" style="padding:0">
+    <img src="img/logo.jpg" alt="Logo de House Party Eventos">
+    <div class="hero-caption">
+      <p>Organización de eventos · Costa Rica</p>
+      <a class="btn" href="https://wa.me/50689540469" target="_blank" rel="noopener">Cotiza tu evento por WhatsApp</a>
+    </div>
+  </section>
+
+  <section id="nosotros">
+    <div class="wrap about-grid">
+      <div>
+        <div class="eyebrow">Acerca de nosotros</div>
+        <h2>Hacemos que cada evento se convierta en un recuerdo.</h2>
+        <p class="intro">En <strong>House Party Eventos</strong> trabajamos para darle vida a tus celebraciones. Nos enfocamos en la organización y producción de eventos, cuidando los detalles y creando ambientes especiales para que vos y tus invitados disfruten cada momento.</p>
+        <a class="btn" href="#contacto">Hablemos de tu evento</a>
+      </div>
+      <div class="about-photo"><img src="img/nosotros.png" alt="Montaje de evento en un espacio decorado"></div>
+    </div>
+  </section>
+
+  <section class="dark-section" id="servicios">
+    <div class="wrap">
+      <div class="eyebrow">Lo que hacemos</div>
+      <h2>Servicios para tus celebraciones</h2>
+      <p class="intro">Soluciones para crear un evento bien montado, con ambiente, imagen y producción.</p>
+
+      <div class="services">
+        <article class="service service-text"><div class="copy"><h3>Pólvora fría</h3><p>Efectos de chispas frías para entradas y momentos especiales.</p></div></article>
+        <article class="service service-text"><div class="copy"><h3>Cañón CO₂</h3><p>Un efecto de impacto para elevar la energía de la fiesta.</p></div></article>
+        <article class="service service-text"><div class="copy"><h3>Sonido profesional</h3><p>Audio profesional para fiestas, celebraciones y eventos empresariales.</p></div></article>
+        <article class="service service-text"><div class="copy"><h3>Luces LED</h3><p>Iluminación para crear ambientes y momentos espectaculares.</p></div></article>
+        <article class="service service-text"><div class="copy"><h3>Giro 360°</h3><p>Una experiencia de video 360° para que tus invitados se lleven un recuerdo.</p></div></article>
+        <article class="service service-text"><div class="copy"><h3>Photobooth 360°</h3><p>Videos divertidos y recuerdos especiales para compartir.</p></div></article>
+        <article class="service service-text"><div class="copy"><h3>Piso LED</h3><p>Pistas iluminadas para llenar de energía la celebración.</p></div></article>
+        <article class="service service-text"><div class="copy"><h3>Estructura Truss</h3><p>Estructuras para soportar iluminación y equipo de producción.</p></div></article>
+        <article class="service service-text"><div class="copy"><h3>Pantallas LED</h3><p>Soluciones visuales para presentaciones, fiestas y escenarios.</p></div></article>
+        <article class="service service-text"><div class="copy"><h3>Personajes para hora loca</h3><p>Personajes y animación para poner a todos a disfrutar.</p></div></article>
+        <article class="service service-text"><div class="copy"><h3>Quince años</h3><p>Producción para celebrar una noche inolvidable.</p></div></article>
+        <article class="service service-text"><div class="copy"><h3>Bodas</h3><p>Detalles y producción para acompañar uno de los días más importantes.</p></div></article>
+        <article class="service service-text"><div class="copy"><h3>Celebraciones de 50 años</h3><p>Montajes especiales para celebrar en grande.</p></div></article>
+        <article class="service service-text"><div class="copy"><h3>Eventos empresariales</h3><p>Producción y ambientación para actividades corporativas.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="galeria">
+    <div class="wrap">
+      <div class="eyebrow">Nuestro trabajo</div>
+      <h2>Momentos y montajes</h2>
+      <p class="intro">Algunas imágenes de los espacios y montajes que dan vida a nuestros eventos.</p>
+
+      <div class="galeria-grid" id="galeriaGrid" aria-live="polite"></div>
+      <p class="galeria-msg" id="galeriaMsg">Cargando fotos…</p>
+      <div style="text-align:center"><button class="btn" id="verMas" type="button" hidden>Ver más fotos</button></div>
+    </div>
+  </section>
+
+  <section class="dark-section" id="redes">
+    <div class="wrap">
+      <div class="eyebrow">Conectá con nosotros</div>
+      <h2>Seguinos en redes</h2>
+      <p class="intro">Encontranos en nuestras redes sociales y mantenete al tanto de nuestros eventos y montajes.</p>
+      <div class="socials">
+        <a class="social-card" href="https://www.instagram.com/house_party_cr/" target="_blank" rel="noopener noreferrer" aria-label="Visitar Instagram de House Party Eventos"><strong>Instagram ↗</strong><span>@house_party_cr</span></a>
+        <a class="social-card" href="https://www.facebook.com/HousePartyDiscomovil" target="_blank" rel="noopener noreferrer" aria-label="Visitar Facebook de House Party Eventos"><strong>Facebook ↗</strong><span>House Party Discomóvil</span></a>
+        <a class="social-card" href="https://www.tiktok.com/@jasonmorafallas" target="_blank" rel="noopener noreferrer" aria-label="Visitar TikTok"><strong>TikTok ↗</strong><span>@jasonmorafallas</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="wrap contact-box">
+      <div>
+        <div class="eyebrow">Contáctanos</div>
+        <h2>¿Listo para organizar tu próximo evento?</h2>
+        <p>Escribinos y conversemos sobre tu idea. Estamos para ayudarte.</p>
+        <p style="margin-top:12px;color:#eaf8ff"><strong>WhatsApp: +506 8954 0469</strong></p>
+      </div>
+      <a class="btn" href="https://wa.me/50689540469" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap">© <span id="year">2026</span> House Party Eventos · Organización de Eventos</div></footer>
+<div class="lightbox" id="lb" role="dialog" aria-modal="true" aria-label="Visor de fotos">
+  <button class="lb-btn lb-close" id="lbClose" aria-label="Cerrar">✕</button>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Anterior">‹</button>
+  <img id="lbImg" alt="">
+  <button class="lb-btn lb-next" id="lbNext" aria-label="Siguiente">›</button>
+  <div class="lb-count" id="lbCount"></div>
+</div>
+<script>
+document.getElementById('year').textContent=new Date().getFullYear();
+(function(){
+  var POR_PAGINA=12,fotos=[],mostradas=0,actual=0;
+  var grid=document.getElementById('galeriaGrid'),msg=document.getElementById('galeriaMsg'),mas=document.getElementById('verMas');
+  var lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg'),lbCount=document.getElementById('lbCount');
+
+  function ruta(n){return 'galeria/'+encodeURIComponent(n);}
+  function pintar(){
+    var fin=Math.min(mostradas+POR_PAGINA,fotos.length);
+    for(var i=mostradas;i<fin;i++){(function(i){
+      var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Ver foto '+(i+1));
+      var im=new Image();im.src=ruta(fotos[i]);im.alt='Foto de un evento de House Party';im.loading='lazy';im.decoding='async';
+      b.appendChild(im);b.onclick=function(){abrir(i);};grid.appendChild(b);
+    })(i);}
+    mostradas=fin;mas.hidden=mostradas>=fotos.length;
+  }
+  function abrir(i){actual=i;mostrar();lb.classList.add('open');document.body.style.overflow='hidden';}
+  function cerrar(){lb.classList.remove('open');document.body.style.overflow='';}
+  function mostrar(){lbImg.src=ruta(fotos[actual]);lbCount.textContent=(actual+1)+' / '+fotos.length;}
+  function mover(d){actual=(actual+d+fotos.length)%fotos.length;mostrar();}
+
+  document.getElementById('lbClose').onclick=cerrar;
+  document.getElementById('lbPrev').onclick=function(){mover(-1);};
+  document.getElementById('lbNext').onclick=function(){mover(1);};
+  lb.addEventListener('click',function(e){if(e.target===lb)cerrar();});
+  document.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('open'))return;
+    if(e.key==='Escape')cerrar();if(e.key==='ArrowLeft')mover(-1);if(e.key==='ArrowRight')mover(1);
+  });
+  var x0=null;
+  lb.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;},{passive:true});
+  lb.addEventListener('touchend',function(e){
+    if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;x0=null;
+    if(Math.abs(dx)>50)mover(dx<0?1:-1);
+  });
+  mas.onclick=pintar;
+
+  fetch('galeria/galeria.json',{cache:'no-cache'})
+    .then(function(r){if(!r.ok)throw 0;return r.json();})
+    .then(function(d){
+      fotos=d.fotos||[];
+      if(!fotos.length){msg.textContent='Pronto subiremos fotos de nuestros eventos.';return;}
+      msg.hidden=true;pintar();
+    })
+    .catch(function(){msg.textContent='No se pudo cargar la galería. Si estás probando el archivo en tu computadora, ábrelo desde GitHub Pages o un servidor local.';});
+})();
+</script>
+</body>
+</html>
